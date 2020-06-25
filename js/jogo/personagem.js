@@ -1,26 +1,24 @@
 class Personagem{
-    constructor(imagem, largura, altura, larguraDoSprite, alturaDoSprite){
-
+    constructor(imagem, largura, altura, larguraEmSprites, alturaEmSprites){
         this.imagem = imagem
 
-        this.larguraDoSprite = larguraDoSprite
-        this.alturaDoSprite = alturaDoSprite
-        
         this.largura = largura
         this.altura = altura
+        
+        this.larguraEmSprites = larguraEmSprites
+        this.alturaEmSprites = alturaEmSprites
 
-        this.larguraEmSprites = this.imagem.width / this.larguraDoSprite;
-        this.alturaEmSprites = this.imagem.height / this.alturaDoSprite;
+        this.larguraDoSprite = Math.ceil(this.imagem.width / this.larguraEmSprites)
+        this.alturaDoSprite = Math.ceil(this.imagem.height / this.alturaEmSprites)
 
         this.x = 0
         this.y = height - this.altura
         
         this.frameAtual = 0
-        
     }
 
     exibe(){
-        const posicaoDoSprite = this.posicaoDoSprite()
+        const posicaoDoSprite = this.posicaoDoSprite(this.frameAtual)
 
         image(this.imagem, this.x, this.y, this.largura, this.altura, 
             posicaoDoSprite.x, posicaoDoSprite.y, this.larguraDoSprite, this.alturaDoSprite)
@@ -29,18 +27,16 @@ class Personagem{
     }
 
     anima(){
-        this.frameAtual++;
-
+        this.frameAtual++
         if(this.frameAtual >= this.larguraEmSprites * this.alturaEmSprites){
             this.frameAtual = 0
         }
     }
 
-    posicaoDoSprite(){
+    posicaoDoSprite(frame){
+        const x = (frame % this.larguraEmSprites) * this.larguraDoSprite
+        const y = parseInt(frame / this.larguraEmSprites) * this.alturaDoSprite
         
-        const x = (this.frameAtual % this.larguraEmSprites) * this.larguraDoSprite
-        const y = parseInt(this.frameAtual / this.alturaEmSprites) * this.alturaDoSprite
-
         return { x, y }
     }
 }
