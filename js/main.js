@@ -22,9 +22,3 @@ function draw() {
 
     personagem.exibe()
 }
-
-// background(int): escala de cinza
-// background(int, int, int): r, g, b
-// background(string): cor css
-// background(imagem carregada)
-
