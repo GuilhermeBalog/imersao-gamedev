@@ -1,42 +1,45 @@
-class Personagem{
+class Personagem extends Animacao{
     constructor(imagem, largura, altura, larguraEmSprites, alturaEmSprites){
-        this.imagem = imagem
+        super(imagem, 0, largura, altura, larguraEmSprites, alturaEmSprites)
 
-        this.largura = largura
-        this.altura = altura
-        
-        this.larguraEmSprites = larguraEmSprites
-        this.alturaEmSprites = alturaEmSprites
+        this.yInicial = this.y
 
-        this.larguraDoSprite = Math.ceil(this.imagem.width / this.larguraEmSprites)
-        this.alturaDoSprite = Math.ceil(this.imagem.height / this.alturaEmSprites)
-
-        this.x = 0
-        this.y = height - this.altura
-        
-        this.frameAtual = 0
+        this.velocidadeDoPulo = 0
+        this.forcaDoPulo = 30
+        this.gravidade = 3
     }
 
-    exibe(){
-        const posicaoDoSprite = this.posicaoDoSprite(this.frameAtual)
-
-        image(this.imagem, this.x, this.y, this.largura, this.altura, 
-            posicaoDoSprite.x, posicaoDoSprite.y, this.larguraDoSprite, this.alturaDoSprite)
-
-        this.anima()
+    pula(){
+        this.velocidadeDoPulo =  - this.forcaDoPulo
     }
 
-    anima(){
-        this.frameAtual++
-        if(this.frameAtual >= this.larguraEmSprites * this.alturaEmSprites){
-            this.frameAtual = 0
+    aplicaGravidade(){
+        this.y = this.y + this.velocidadeDoPulo
+        this.velocidadeDoPulo = this.velocidadeDoPulo + this.gravidade
+
+        if(this.y > this.yInicial){
+            this.y = this.yInicial
         }
     }
 
-    posicaoDoSprite(frame){
-        const x = (frame % this.larguraEmSprites) * this.larguraDoSprite
-        const y = parseInt(frame / this.larguraEmSprites) * this.alturaDoSprite
+    estaColidindo(inimigo){
+        // noFill()
+        // rect(this.x, this.y, this.largura, this.altura)
+        // rect(inimigo.x, inimigo.y, inimigo.largura, inimigo.altura)
+
+        const precisao = 0.7
+
+        const colisao = collideRectRect(
+            this.x, 
+            this.y, 
+            this.largura * precisao, 
+            this.altura * precisao,
+            inimigo.x, 
+            inimigo.y, 
+            inimigo.largura * precisao, 
+            inimigo.altura * precisao
+        )
         
-        return { x, y }
+        return colisao
     }
 }
