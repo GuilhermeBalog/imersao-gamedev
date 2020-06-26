@@ -12,8 +12,8 @@ function setup() {
     cenario = new Cenario(imagemCenario, 3)
     personagem = new Personagem(imagemPersonagem, 110, 135, 4, 4)
     // personagem = new Personagem(imagemNinja, 180, 248, 5, 2)
-    frameRate(40)
-    somDoJogo.loop()
+    frameRate(30)
+    // somDoJogo.loop()
 }
 
 function draw() {
