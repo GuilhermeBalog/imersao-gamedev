@@ -1,8 +1,17 @@
 html, body {
     margin: 0;
     padding: 0;
+    height: 100%;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
 }
 
 canvas {
     display: block;
+    border: 5px solid #bdbdbd;
 }
