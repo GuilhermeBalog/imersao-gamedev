@@ -29,3 +29,7 @@ som = loadSound('path/to/sound')
 som.play() // Toca uma vez
 som.loop() // Toca em loop
 ```
+
+## Créditos
+
+Background por [DigitalMoons](https://digitalmoons.itch.io/parallax-forest-background)
