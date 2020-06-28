@@ -1,6 +1,7 @@
 class Personagem extends Animacao{
-    constructor(imagem, somDoPulo, largura, altura, larguraEmSprites, alturaEmSprites){
-        super(imagem, 0, largura, altura, larguraEmSprites, alturaEmSprites)
+    constructor({ imagem, largura, altura, larguraEmSprites, alturaEmSprites, numeroDeFrames }, x, deltaY, somDoPulo){
+
+        super({ imagem, largura, altura, larguraEmSprites, alturaEmSprites, numeroDeFrames }, x, deltaY)
 
         this.yInicial = this.y
 
@@ -35,6 +36,7 @@ class Personagem extends Animacao{
         // noFill()
         // rect(this.x, this.y, this.largura, this.altura)
         // rect(inimigo.x, inimigo.y, inimigo.largura, inimigo.altura)
+        // circle(this.x + (this.largura/2), this.y + (this.altura/2), Math.max(this.largura, this.altura))
 
         const precisao = 0.7
 

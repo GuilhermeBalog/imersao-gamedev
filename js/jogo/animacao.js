@@ -1,5 +1,5 @@
 class Animacao{
-    constructor(imagem, x, largura, altura, larguraEmSprites, alturaEmSprites){
+    constructor({ imagem, largura, altura, larguraEmSprites, alturaEmSprites, numeroDeFrames }, x, deltaY){
         this.imagem = imagem
 
         this.largura = largura
@@ -9,13 +9,15 @@ class Animacao{
         this.alturaEmSprites = alturaEmSprites
 
         this.x = x
-        this.y = height - this.altura
+
+        this.deltaY = deltaY
+        this.y = height - this.altura - this.deltaY
 
         this.larguraDoSprite = Math.ceil(this.imagem.width / this.larguraEmSprites)
         this.alturaDoSprite = Math.ceil(this.imagem.height / this.alturaEmSprites)
 
         this.frameAtual = 0;
-        this.maxFrames = this.larguraEmSprites * this.alturaEmSprites
+        this.numeroDeFrames = numeroDeFrames || (this.larguraEmSprites * this.alturaEmSprites)
     }
 
     exibe(){
@@ -28,7 +30,7 @@ class Animacao{
     }
 
     anima(){
-        this.frameAtual = (this.frameAtual + 1) % this.maxFrames
+        this.frameAtual = (this.frameAtual + 1) % this.numeroDeFrames
     }
 
     posicaoDoSprite(frame){
