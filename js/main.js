@@ -60,7 +60,19 @@ function draw() {
     inimigo.move()
 
     if(personagem.estaColidindo(inimigo)){
-        console.log('Colidiu')
-        noLoop()
+        gameOver()
     }
+}
+
+function gameOver(){
+    textSize(30)
+    textAlign(CENTER)
+
+    fill("#000")
+    text('GAME OVER', (width/2) + 2, (height/2) + 2)
+
+    fill("#FFF")
+    text('GAME OVER', width/2, height/2)
+
+    noLoop()
 }
