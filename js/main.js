@@ -30,10 +30,10 @@ function setup() {
         camadas[i] = new Cenario(imagensParallax[i] , temposParallax[i])
     }
 
-    personagem = new Personagem(imagemPersonagem, 110, 135, 4, 4)
+    personagem = new Personagem(imagemPersonagem, somDoPulo, 110, 135, 4, 4)
     inimigo = new Inimigo(imagemInimigo, width - 52, 52, 52, 4, 7)
 
-    // personagem = new Personagem(imagemNinja, 180, 248, 5, 2)
+    // personagem = new Personagem(imagemNinja, somDoPulo 180, 248, 5, 2)
 
     frameRate(40)
 
@@ -43,7 +43,6 @@ function setup() {
 function keyPressed(){
     if(key == 'ArrowUp' || key == ' '){
         personagem.pula()
-        somDoPulo.play()
     }
 }
 
