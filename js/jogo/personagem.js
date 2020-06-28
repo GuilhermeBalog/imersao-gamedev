@@ -8,7 +8,7 @@ class Personagem extends Animacao{
         this.somDoPulo = somDoPulo
 
         this.velocidadeDoPulo = 0
-        this.forcaDoPulo = 30
+        this.alturaDoPulo = 50
         this.gravidade = 3
         this.maxPulos = 2
         this.pulosAcontecendo = 0
@@ -16,7 +16,7 @@ class Personagem extends Animacao{
 
     pula(){
         if(this.pulosAcontecendo < this.maxPulos){
-            this.velocidadeDoPulo =  - this.forcaDoPulo
+            this.velocidadeDoPulo =  - this.alturaDoPulo
             this.somDoPulo.play()
             this.pulosAcontecendo++
         }
@@ -33,22 +33,47 @@ class Personagem extends Animacao{
     }
 
     estaColidindo(inimigo){
-        // noFill()
-        // rect(this.x, this.y, this.largura, this.altura)
-        // rect(inimigo.x, inimigo.y, inimigo.largura, inimigo.altura)
-        // circle(this.x + (this.largura/2), this.y + (this.altura/2), Math.max(this.largura, this.altura))
-
         const precisao = 0.7
 
-        const colisao = collideRectRect(
-            this.x, 
-            this.y, 
+        noFill()
+        // stroke("#000")
+        // rect(this.x, this.y, this.largura, this.altura)
+        // rect(inimigo.x, inimigo.y, inimigo.largura, inimigo.altura)
+        stroke("red")
+        circle(this.x + (this.largura/2), this.y + (this.altura/2), Math.min(this.largura, this.altura))
+        circle(inimigo.x + (inimigo.largura/2), inimigo.y + (inimigo.altura/2), Math.min(inimigo.largura, inimigo.altura))
+        /*rect(
+            this.x + (this.largura - (this.largura * precisao))/2, 
+            this.y + (this.altura - (this.altura * precisao))/2, 
             this.largura * precisao, 
-            this.altura * precisao,
-            inimigo.x, 
-            inimigo.y, 
+            this.altura * precisao
+        )
+        rect(
+            inimigo.x + (inimigo.largura - (inimigo.largura * precisao))/2, 
+            inimigo.y + (inimigo.altura - (inimigo.altura * precisao))/2, 
             inimigo.largura * precisao, 
             inimigo.altura * precisao
+        )*/
+
+
+        /*const colisao = collideRectRect(
+            this.x + (this.largura * (1 - precisao))/2, 
+            this.y + (this.altura * (1 - precisao))/2, 
+            this.largura * precisao, 
+            this.altura * precisao,
+            inimigo.x + (inimigo.largura * (1 - precisao))/2, 
+            inimigo.y + (inimigo.altura * (1 - precisao))/2, 
+            inimigo.largura * precisao, 
+            inimigo.altura * precisao
+        )*/
+
+        const colisao = collideCircleCircle(
+            this.x + (this.largura/2), 
+            this.y + (this.altura/2), 
+            Math.min(this.largura, this.altura), 
+            inimigo.x + (inimigo.largura/2), 
+            inimigo.y + (inimigo.altura/2), 
+            Math.min(inimigo.largura, inimigo.altura)
         )
         
         return colisao

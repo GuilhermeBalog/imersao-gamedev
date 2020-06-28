@@ -6,6 +6,7 @@ class Pontuacao{
     exibe(){
         textAlign(RIGHT)
         textSize(50)
+        stroke("#000")
 
         fill("#000")
         text(parseInt(this.pontos), width - 28, 52)

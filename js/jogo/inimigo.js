@@ -14,4 +14,8 @@ class Inimigo extends Animacao{
             this.x = width;
         }
     }
+
+    estaVisivel(){
+        return this.x < - (this.largura)
+    }
 }

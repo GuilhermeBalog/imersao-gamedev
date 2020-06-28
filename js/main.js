@@ -5,6 +5,7 @@ let imagemPersonagem
 let imagemInimigo
 let imagemTroll
 let imagemVoador
+let imagemGameOver
 
 let somDoJogo
 let somDoPulo
@@ -12,6 +13,7 @@ let somDoPulo
 let personagem
 
 let pontuacao
+let inimigoAtual = 0;
 
 const inimigos = []
 
@@ -30,6 +32,8 @@ function preload(){
     for(let i = 0; i < 10; i++){
         imagensParallax[i] = loadImage(`../images/cenario/paralax/${i + 1}.png`)
     }
+
+    imagemGameOver = loadImage('../images/assets/game-over.png')
 }
 
 function setup() {
@@ -55,7 +59,7 @@ function setup() {
         altura: 52,
         larguraEmSprites: 4,
         alturaEmSprites: 7
-    }, width - 52, 15, 10, 200)
+    }, width - 52, 15, 10, 100)
 
     const troll = new Inimigo({
         imagem: imagemTroll,
@@ -64,7 +68,7 @@ function setup() {
         larguraEmSprites: 5,
         alturaEmSprites: 6,
         numeroDeFrames: 28
-    }, 2 * width, 0, 8, 500)
+    }, 2 * width, 0, 10, 100)
 
     const voador = new Inimigo({
         imagem: imagemVoador,
@@ -73,7 +77,7 @@ function setup() {
         larguraEmSprites: 3,
         alturaEmSprites: 6,
         numeroDeFrames: 16
-    }, 3 * width, 200, 13, 2000)
+    }, 3 * width, 200, 10, 100)
 
     inimigos.push(inimigo, troll, voador)
 
@@ -97,28 +101,35 @@ function draw() {
     personagem.exibe()
     personagem.aplicaGravidade()
 
-    inimigos.forEach(inimigo => {
-        inimigo.exibe()
-        inimigo.move()
+    const inimigo = inimigos[inimigoAtual]
 
-        if(personagem.estaColidindo(inimigo)){
-            gameOver()
-        }
-    })
+    inimigo.exibe()
+    inimigo.move()
+
+    if(inimigo.estaVisivel()){
+        inimigoAtual = ++inimigoAtual % inimigos.length
+        inimigo.velocidade = parseInt(random(10, 30))
+    }
+
+    if(personagem.estaColidindo(inimigo)){
+        gameOver()
+    }
 
     pontuacao.exibe()
     pontuacao.adicionarPonto()
 }
 
 function gameOver(){
-    textSize(30)
+    /*textSize(30)
     textAlign(CENTER)
 
     fill("#000")
     text('GAME OVER', (width/2) + 2, (height/2) + 2)
 
     fill("#FFF")
-    text('GAME OVER', width/2, height/2)
+    text('GAME OVER', width/2, height/2)*/
+
+    image(imagemGameOver, (width/2) - (imagemGameOver.width/2), (height/2) - (imagemGameOver.height/2))
 
     noLoop()
 }
