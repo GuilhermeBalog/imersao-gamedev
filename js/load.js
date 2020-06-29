@@ -1,4 +1,7 @@
 function preload(){
+    imagemTelaInicial = loadImage('../images/assets/telaInicial.png')
+    fonteTelaInicial = loadFont('../images/assets/fonteTelaInicial.otf')
+
     imagemPersonagem = loadImage('../images/personagem/correndo.png')
 
     imagemInimigo = loadImage('../images/inimigos/gotinha.png')
