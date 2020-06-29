@@ -3,7 +3,7 @@ function setup() {
     frameRate(40)
     // somDoJogo.loop()
 
-    botaoGerenciador = new BotaoGerenciador("Start", width/2, height/2)
+    // botaoGerenciador = new BotaoGerenciador("Start", width/2, height/2)
 
     telaInicial = new TelaInicial()
     jogo = new Jogo()

@@ -1,6 +1,7 @@
 class Jogo{
     constructor(){
-        this.inimigoAtual = 0 
+        this.indice = 0
+        this.mapa = fita.mapa
     }
 
     setup(){
@@ -9,7 +10,7 @@ class Jogo{
         }
 
         pontuacao = new Pontuacao()
-        vida = new Vida(3, 3)
+        vida = new Vida(fita.configuracoes.vidaMaxima, fita.configuracoes.vidaInicial)
 
         personagem = new Personagem({
             imagem: imagemPersonagem,
@@ -25,7 +26,7 @@ class Jogo{
             altura: 52,
             larguraEmSprites: 4,
             alturaEmSprites: 7
-        }, width - 52, 15, 10, 100)
+        }, width - 52, 15, 10)
 
         const troll = new Inimigo({
             imagem: imagemTroll,
@@ -34,7 +35,7 @@ class Jogo{
             larguraEmSprites: 5,
             alturaEmSprites: 6,
             numeroDeFrames: 28
-        }, 2 * width, 0, 10, 100)
+        }, 2 * width, 0, 10)
 
         const voador = new Inimigo({
             imagem: imagemVoador,
@@ -43,7 +44,7 @@ class Jogo{
             larguraEmSprites: 3,
             alturaEmSprites: 6,
             numeroDeFrames: 16
-        }, 3 * width, 200, 10, 100)
+        }, 3 * width, 200, 10)
 
         inimigos.push(inimigo, troll, voador)
     }
@@ -63,19 +64,22 @@ class Jogo{
         personagem.exibe()
         personagem.aplicaGravidade()
     
-        const inimigo = inimigos[this.inimigoAtual]
+        const linhaAtual = this.mapa[this.indice]
+        const inimigo = inimigos[linhaAtual.inimigo]
     
         inimigo.exibe()
         inimigo.move()
     
-        if(inimigo.estaVisivel()){
-            this.inimigoAtual = ++this.inimigoAtual % inimigos.length
-            inimigo.velocidade = parseInt(random(10, 30))
+        if(inimigo.jaPassou()){
+            this.indice = ++this.indice % this.mapa.length
+
+            inimigo.velocidade = linhaAtual.velocidade
+            inimigo.aparecer()
         }
     
         if(personagem.estaColidindo(inimigo)){
             vida.perderVida()
-            
+
             if(vida.vidas <= 0){
                 this.gameOver()
             }

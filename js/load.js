@@ -18,4 +18,6 @@ function preload(){
     }
 
     imagemGameOver = loadImage('../images/assets/game-over.png')
+
+    fita = loadJSON('../fita/fita.json')
 }
