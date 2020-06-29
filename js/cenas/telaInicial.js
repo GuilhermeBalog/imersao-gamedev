@@ -1,16 +1,13 @@
 class TelaInicial{
-    setup(){
-        console.log("Setup tela inicial")
-    }
-
-    keyPressed(){
-
+    keyPressed(key){
+        if(key == 'Enter'){
+            cenaAtual = 'jogo'
+        }
     }
 
     draw(){
         this._imagemDeFundo()
         this._texto()
-        this._botao()
     }
     
     _imagemDeFundo(){
@@ -26,10 +23,8 @@ class TelaInicial{
 
         textSize(75)
         text('Hipsta', width/2, 160)
-    }
 
-    _botao(){
-        botaoGerenciador.y = height/ 7 * 6
-        botaoGerenciador.draw()
+        textSize(30)
+        text('aperte enter para iniciar o jogo', width/2, 210)
     }
 }

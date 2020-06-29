@@ -19,10 +19,9 @@ let personagem
 let pontuacao
 let vida
 
-let cenaAtual = 'jogo' //'telaInicial'
+let cenaAtual = 'telaInicial'
 let cenas
 
-let botaoGerenciador
 let telaInicial
 let jogo
 
@@ -31,3 +30,5 @@ let fita
 const inimigos = []
 
 const temposParallax = [8, 6, 6, 5, 4, 3, 2, 1.5, 1, 0]
+
+let degubMode = false

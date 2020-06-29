@@ -18,7 +18,7 @@ class Jogo{
             altura: 135,
             larguraEmSprites: 4,
             alturaEmSprites: 4,
-        }, 0, 15, somDoPulo)
+        }, 0, 25, somDoPulo)
 
         const inimigo = new Inimigo({
             imagem: imagemInimigo,
@@ -26,7 +26,7 @@ class Jogo{
             altura: 52,
             larguraEmSprites: 4,
             alturaEmSprites: 7
-        }, width - 52, 15, 10)
+        }, width - 52, 25, 10)
 
         const troll = new Inimigo({
             imagem: imagemTroll,
