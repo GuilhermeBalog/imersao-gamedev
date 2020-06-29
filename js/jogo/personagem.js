@@ -12,6 +12,8 @@ class Personagem extends Animacao{
         this.gravidade = 3
         this.maxPulos = 2
         this.pulosAcontecendo = 0
+
+        this.estaInvensivel = false
     }
 
     pula(){
@@ -32,7 +34,19 @@ class Personagem extends Animacao{
         }
     }
 
+    tornarInvensivel(){
+        this.estaInvensivel = true
+
+        setTimeout(() => {
+            this.estaInvensivel = false
+        }, 2000)
+    }
+
     estaColidindo(inimigo){
+        if(this.estaInvensivel){
+            return false
+        }
+
         const precisao = 0.7
 
         noFill()

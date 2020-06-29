@@ -8,16 +8,18 @@ let imagemTroll
 let imagemVoador
 let imagemGameOver
 
+let imagemVida
+
 let fonteTelaInicial
 
 let somDoJogo
 let somDoPulo
 
 let personagem
-
 let pontuacao
+let vida
 
-let cenaAtual = 'telaInicial'
+let cenaAtual = 'jogo' //'telaInicial'
 let cenas
 
 let botaoGerenciador

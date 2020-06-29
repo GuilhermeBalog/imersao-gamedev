@@ -8,6 +8,8 @@ function preload(){
     imagemTroll = loadImage('../images/inimigos/troll.png')
     imagemVoador = loadImage('../images/inimigos/gotinha-voadora.png')
 
+    imagemVida = loadImage('../images/assets/coracao.png')
+
     somDoJogo = loadSound('../sounds/trilha_jogo.mp3')
     somDoPulo = loadSound('../sounds/somPulo.mp3')
 

@@ -9,6 +9,7 @@ class Jogo{
         }
 
         pontuacao = new Pontuacao()
+        vida = new Vida(3, 3)
 
         personagem = new Personagem({
             imagem: imagemPersonagem,
@@ -73,9 +74,16 @@ class Jogo{
         }
     
         if(personagem.estaColidindo(inimigo)){
-            this.gameOver()
+            vida.perderVida()
+            
+            if(vida.vidas <= 0){
+                this.gameOver()
+            }
+
+            personagem.tornarInvensivel()
         }
     
+        vida.exibe()
         pontuacao.exibe()
         pontuacao.adicionarPonto()
     }
