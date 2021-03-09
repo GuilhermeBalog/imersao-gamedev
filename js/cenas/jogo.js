@@ -1,12 +1,12 @@
-class Jogo{
-    constructor(){
+class Jogo {
+    constructor() {
         this.indice = 0
         this.mapa = fita.mapa
     }
 
-    setup(){
-        for(let i = imagensParallax.length - 1; i >= 0; i--){
-            camadas[i] = new Cenario(imagensParallax[i] , temposParallax[i])
+    setup() {
+        for (let i = imagensParallax.length - 1; i >= 0; i--) {
+            camadas[i] = new Cenario(imagensParallax[i], temposParallax[i])
         }
 
         pontuacao = new Pontuacao()
@@ -49,52 +49,52 @@ class Jogo{
         inimigos.push(inimigo, troll, voador)
     }
 
-    keyPressed(key){
-        if(key == 'ArrowUp' || key == ' '){
+    keyPressed(key) {
+        if (key == 'ArrowUp' || key == ' ') {
             personagem.pula()
         }
     }
 
     draw() {
-        for(let i = camadas.length - 1; i >= 0; i--){
+        for (let i = camadas.length - 1; i >= 0; i--) {
             camadas[i].exibe()
             camadas[i].move()
         }
-    
+
         personagem.exibe()
         personagem.aplicaGravidade()
-    
+
         const linhaAtual = this.mapa[this.indice]
         const inimigo = inimigos[linhaAtual.inimigo]
-    
+
         inimigo.exibe()
         inimigo.move()
-    
-        if(inimigo.jaPassou()){
+
+        if (inimigo.jaPassou()) {
             this.indice = ++this.indice % this.mapa.length
 
             inimigo.velocidade = linhaAtual.velocidade
             inimigo.aparecer()
         }
-    
-        if(personagem.estaColidindo(inimigo)){
+
+        if (personagem.estaColidindo(inimigo)) {
             vida.perderVida()
 
-            if(vida.vidas <= 0){
+            if (vida.vidas <= 0) {
                 this.gameOver()
             }
 
             personagem.tornarInvensivel()
         }
-    
+
         vida.exibe()
         pontuacao.exibe()
         pontuacao.adicionarPonto()
     }
 
-    gameOver(){    
-        image(imagemGameOver, (width/2) - (imagemGameOver.width/2), (height/2) - (imagemGameOver.height/2))
-    
+    gameOver() {
+        image(imagemGameOver, (width / 2) - (imagemGameOver.width / 2), (height / 2) - (imagemGameOver.height / 2))
+
         noLoop()
     }
 }

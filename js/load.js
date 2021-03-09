@@ -1,4 +1,4 @@
-function preload(){
+function preload() {
     imagemTelaInicial = loadImage('./images/assets/telaInicial.png')
     fonteTelaInicial = loadFont('./images/assets/fonteTelaInicial.otf')
 
@@ -13,7 +13,7 @@ function preload(){
     somDoJogo = loadSound('./sounds/trilha_jogo.mp3')
     somDoPulo = loadSound('./sounds/somPulo.mp3')
 
-    for(let i = 0; i < 10; i++){
+    for (let i = 0; i < 10; i++) {
         imagensParallax[i] = loadImage(`./images/cenario/paralax/${i + 1}.png`)
     }
 

@@ -1,9 +1,9 @@
-class Pontuacao{
-    constructor(){
+class Pontuacao {
+    constructor() {
         this.pontos = 0
     }
 
-    exibe(){
+    exibe() {
         textAlign(RIGHT)
         textSize(50)
         stroke("#000")
@@ -15,7 +15,7 @@ class Pontuacao{
         text(parseInt(this.pontos), width - 30, 50)
     }
 
-    adicionarPonto(){
+    adicionarPonto() {
         this.pontos += 0.2
     }
 }

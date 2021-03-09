@@ -11,7 +11,7 @@ function setup() {
 
 }
 
-function keyPressed(){
+function keyPressed() {
     cenas[cenaAtual].keyPressed(key)
 }
 

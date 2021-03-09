@@ -23,7 +23,7 @@ Tipos de background
 ```js
 background(150) // escala de cinza
 background(63, 224, 212) // r, g, b
-background("#3fe0d4") // cor css, em hexa ou rgb()
+background("#3fe0d4") // cor css, em hexadecimal ou rgb()
 
 let imagem = loadImage('path/to/image')
 background(imagem)

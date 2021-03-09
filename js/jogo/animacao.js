@@ -1,5 +1,16 @@
-class Animacao{
-    constructor({ imagem, largura, altura, larguraEmSprites, alturaEmSprites, numeroDeFrames }, x, deltaY){
+class Animacao {
+    constructor(
+        {
+            imagem,
+            largura,
+            altura,
+            larguraEmSprites,
+            alturaEmSprites,
+            numeroDeFrames
+        },
+        x,
+        deltaY
+    ) {
         this.imagem = imagem
 
         this.largura = largura
@@ -20,25 +31,25 @@ class Animacao{
         this.numeroDeFrames = numeroDeFrames || (this.larguraEmSprites * this.alturaEmSprites)
     }
 
-    exibe(){
+    exibe() {
         const posicaoDoSprite = this.posicaoDoSprite(this.frameAtual)
 
-        image(this.imagem, this.x, this.y, this.largura, this.altura, 
+        image(this.imagem, this.x, this.y, this.largura, this.altura,
             posicaoDoSprite.x, posicaoDoSprite.y, this.larguraDoSprite, this.alturaDoSprite)
 
         this.anima()
     }
 
-    anima(){
+    anima() {
         this.frameAtual = (this.frameAtual + 1) % this.numeroDeFrames
     }
 
-    posicaoDoSprite(frame){
+    posicaoDoSprite(frame) {
         const x = (frame % this.larguraEmSprites) * this.larguraDoSprite
         const y = parseInt(frame / this.larguraEmSprites) * this.alturaDoSprite
-        
+
         return { x, y }
     }
 
-    
+
 }
