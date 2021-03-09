@@ -10,9 +10,10 @@ body {
   justify-content: center;
   align-items: center;
   font-family: sans-serif;
+  background-color: #e4c6cc;
 }
 
 canvas {
   display: block;
-  border: 5px solid #bdbdbd;
+  border: 5px solid #3b364e;
 }
